@@ -1,0 +1,66 @@
+
+CREATE TABLE `yarb_genre` (
+  `genre_id` int(11) NOT NULL,
+  `genre` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`genre_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1$$
+
+
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (25,'Game-Show');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (0,'Short');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (1,'Adventure');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (2,'Drama');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (3,'Music');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (4,'Sci-Fi');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (5,'Action');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (6,'Fantasy');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (7,'Horror');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (8,'Biography');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (9,'Comedy');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (10,'Musical');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (11,'Documentary');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (12,'Animation');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (13,'Crime');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (14,'Mystery');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (15,'Romance');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (16,'History');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (17,'War');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (18,'Western');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (19,'Family');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (20,'Sport');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (21,'News');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (22,'Reality-TV');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (23,'Film-Noir');
+INSERT INTO `yarb_genre` (genre_id,genre) VALUES (24,'Talk-Show');
+
+
+# insert movie_id and genre_id
+insert yarb_score (movie_id, genre_id)
+select movie_id, genre_id from title t, movie_info i, yarb_genre g where t.kind_id = 1 and i.movie_id = t.id and i.info_type_id = 5 and g.genre = i.info;
+
+# update rating 
+
+update yarb_score s, (select movie_id, info as rating from movie_info_idx where info_type_id = 201) m
+set s.rating = m.rating 
+where s.movie_id = m.movie_id;
+
+# popularity
+
+update yarb_score s, (select movie_id, info as votes from movie_info_idx where info_type_id = 199) m
+set s.popularity = m.votes 
+where s.movie_id = m.movie_id;
+
+delete from yarb_score where rating is null and popularity is null;
+
+# normalize
+
+update yarb_score set norm_popularity = -0.2 where popularity < 500;   # -1
+update yarb_score set norm_popularity = -0.1 where popularity >= 500 and popularity < 1300;         # -0.5
+update yarb_score set norm_popularity = 0.0 where popularity >= 1300 and popularity < 1700;        # 0
+update yarb_score set norm_popularity = 0.1 where popularity >= 1700 and popularity < 12000;       # 1
+update yarb_score set norm_popularity = 0.2 where popularity >= 12000 and popularity < 50000;      # 2   
+update yarb_score set norm_popularity = 0.4 where popularity >= 50000 and popularity < 100000;     # 4
+update yarb_score set norm_popularity = 0.7 where popularity >= 100000 and popularity < 200000;    # 7
+update yarb_score set norm_popularity = 0.8 where popularity >= 200000 and popularity < 300000;    # 8
+update yarb_score set norm_popularity = 0.9 where popularity >= 300000 and popularity < 400000;    # 9
+update yarb_score set norm_popularity = 1.0 where popularity >= 400000;                            # 10

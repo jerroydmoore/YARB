@@ -1,0 +1,86 @@
+(dp0
+S'Grace Kelley'
+p1
+S'person:4'
+p2
+sS'Morgan Freeman'
+p3
+S'person:4'
+p4
+sS'Bruce Willis'
+p5
+S'person:2'
+p6
+sS'w3'
+p7
+F1.1000000000000001
+sS'w2'
+p8
+F1.0
+sS'w1'
+p9
+F0.29999999999999999
+sS'Cary Grant'
+p10
+S'person:4'
+p11
+sS'R.E.D'
+p12
+S'movie:2'
+p13
+sS'Jennifer Aniston'
+p14
+S'person:1'
+p15
+sS'Cate Blanchett'
+p16
+S'person:4'
+p17
+sS'Jackie Chan'
+p18
+S'person:4'
+p19
+sS'romance'
+p20
+S'genre:2'
+p21
+sS'Volver'
+p22
+S'movie:4'
+p23
+sS'Inception'
+p24
+S'movie:1'
+p25
+sS'Los Secretos en los ojos'
+p26
+S'movie:4'
+p27
+sS'Alfred Hitchcock'
+p28
+S'person:4'
+p29
+sS'Shower'
+p30
+S'movie:4'
+p31
+sS'action'
+p32
+S'genre:2'
+p33
+sS'Penelope Cruz'
+p34
+S'person:4'
+p35
+sS'Nicolaus Cage'
+p36
+S'person:1'
+p37
+sS'thrillers'
+p38
+S'genre:4'
+p39
+sS'output'
+p40
+I1
+s.

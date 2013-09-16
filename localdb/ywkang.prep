@@ -1,0 +1,46 @@
+(dp0
+S'Harrison Ford'
+p1
+S'person:2'
+p2
+sS'The lord of the rings'
+p3
+S'movie:4'
+p4
+sS'Halle Barry'
+p5
+S'person:4'
+p6
+sS'Steven Spielberg'
+p7
+S'director:5'
+p8
+sS'James Bond'
+p9
+S'person:4'
+p10
+sS'w3'
+p11
+F6.7000000000000002
+sS'w2'
+p12
+F1.3
+sS'w1'
+p13
+I1
+sS'Pierce Brosnan'
+p14
+S'person:4'
+p15
+sS'action'
+p16
+S'genre:4'
+p17
+sS'output'
+p18
+I1
+sS'Julia Roberts'
+p19
+S'person:4'
+p20
+s.
