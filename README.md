@@ -4,6 +4,7 @@ YARB
 Yet Another movie Recommendation Bot (YARB) created in Python for Artificial Intelligence class
 
 ==== Sample Dialog
+
 In the sample dialog, `>` is the program responses, `$` indicates user input.
 The user's name is Rebecca, and in the previous session, the program recommended
 "Pirates of the Caribbean."
